@@ -1,0 +1,46 @@
+#.gitignore
+
+target/
+*.class
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+*.iml
+.idea/
+.versionsBackup
+.~*
+
+
+######################
+# Windows
+######################
+ 
+# Windows image file caches
+Thumbs.db 
+ 
+# Folder config file
+Desktop.ini
+ 
+######################
+# Eclipse
+######################
+
+.project
+.metadata
+.classpath
+.settings/
+*/.settings/
+*/bin/
+# PDT-specific
+.buildpath
+
+######################
+# Idea
+######################
+ 
+.idea/**
+*.iml
+*.vpp
+*.vpppath
