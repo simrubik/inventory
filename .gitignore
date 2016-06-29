@@ -1,6 +1,6 @@
-#.gitignore
+.gitignore
 
-*/target/**
+target/
 *.class
 # Package Files #
 *.jar
