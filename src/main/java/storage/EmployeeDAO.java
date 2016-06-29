@@ -8,9 +8,9 @@ public interface EmployeeDAO {
 
 	void createEmployee(Employee employee);
 	
-	void updateEmployee(Long oldEmployeeId, Employee newEmployee);
+	void updateEmployee(Employee newEmployee);
 	
-	void deleteEmployee(Long employeeId);
+	void markForDeletionEmployee(Long employeeId);
 	
 	List<Employee> getAll();
 

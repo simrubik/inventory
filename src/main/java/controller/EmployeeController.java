@@ -93,19 +93,19 @@ public class EmployeeController {
 		model.addAttribute("employee", e);
 		model.addAttribute("employeeId", employeeId);
 		model.addAttribute("action", "edit");
+		model.addAttribute("active", e.getActive());
 
 		return "addEmployee";
 	}
 
 	@RequestMapping(value = "/{employeeId}", method = RequestMethod.POST)
-	public String editEmployee(@RequestParam("employeeId") String oldEmployeeId,
-			@Valid @ModelAttribute("employee") Employee newEmployee, BindingResult bindingResult, Model model) {
+	public String editEmployee(@Valid @ModelAttribute("employee") Employee newEmployee, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("BindingResult valid error");
 			return "addEmployee";
 		}
 
-		employeeService.updateEmployee(oldEmployeeId, newEmployee);
+		employeeService.updateEmployee(newEmployee);
 		model.addAttribute("employee", newEmployee);
 
 		return "redirect:/employees";
@@ -113,7 +113,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = "delete/{employeeId}", method = RequestMethod.GET)
 	public String deleteEmployee(@PathVariable("employeeId") String employeeId) {
-		employeeService.deleteEmployee(employeeId);
+		employeeService.markForDeletionEmployee(employeeId);
 		
 		return "redirect:/employees";
 	}

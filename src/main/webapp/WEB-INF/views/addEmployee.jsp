@@ -48,7 +48,9 @@
 	
 	<form:form id="employeeForm" action="${actionUrl}" method="POST"
 		commandName="employee" class="form-horizontal" role="form">
-		<input type="hidden" name="employeeId" value="${employeeId}" />
+		<input type="hidden" name="id" value="${employeeId}" />
+		<input type="hidden" name="active" value="${active}" />
+<%-- 		<form:hidden path="active"/> --%>
 		
 		<div class="form-group">
 			<label class="control-label col-sm-2"><spring:message code="form.addEmployee.firstName" />:</label>

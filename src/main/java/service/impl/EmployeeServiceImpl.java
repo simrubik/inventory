@@ -34,16 +34,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public void updateEmployee(String oldEmployeeId, Employee newEmployee) {
-		Long employeeId = Long.parseLong(oldEmployeeId);
-		employeeDao.updateEmployee(employeeId, newEmployee);
+	public void updateEmployee(Employee newEmployee) {
+		employeeDao.updateEmployee(newEmployee);
 	}
 
 	@Override
-	public void deleteEmployee(String employeeId) {
+	public void markForDeletionEmployee(String employeeId) {
 		Long id = Long.parseLong(employeeId);
 		
-		employeeDao.deleteEmployee(id);
+		employeeDao.markForDeletionEmployee(id);
 	}
 
 }

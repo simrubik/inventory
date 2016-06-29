@@ -1,4 +1,17 @@
 $(document).ready(function() {
+	var indexRow = 0;
+	
+	$("#employeeSearch tr.employee-row").each(function(index, row) {
+		disableEditBtn($(row));
+	});
+
+	function disableEditBtn(row) {		
+		if (row.find(".edit-flag").prop("checked")) {
+			console.log($("#employeeSearch tr.employee-row").index(row));
+			$("#row" + indexRow +"disableEditBtn").addClass('disabled');
+		}		
+		indexRow = indexRow + 1; 
+	};
 
 	$(".datepicker").datepicker({
 		format : 'mm/dd/yyyy',
@@ -38,6 +51,7 @@ $(document).ready(function() {
 
 	$('#employeeSearch').DataTable({
 		"bFilter" : false,
-		"scrollX": true
+		"scrollX" : true
 	});
+
 });

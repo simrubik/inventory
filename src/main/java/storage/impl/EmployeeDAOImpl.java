@@ -11,18 +11,19 @@ import model.Employee;
 import storage.EmployeeDAO;
 
 @Repository("employeeDAOImpl")
-public class EmployeeDAOImpl implements EmployeeDAO{
+public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	public void createEmployee(Employee employee) {
 		em.persist(employee);
-		
+
 	}
 
 	public Employee getEmployeeById(Long id) {
-		return em.createQuery("SELECT e FROM Employee e WHERE e.id=:id", Employee.class).setParameter("id", id).getSingleResult();
+		return em.createQuery("SELECT e FROM Employee e WHERE e.id=:id", Employee.class).setParameter("id", id)
+				.getSingleResult();
 	}
 
 	public List<Employee> getEmployeeByName(String name) {
@@ -32,19 +33,27 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	}
 
 	public List<Employee> getAll() {
-		return em.createQuery("SELECT e FROM Employee e ORDER BY e.firstName, e.secondName", Employee.class).getResultList();
+		return em.createQuery("SELECT e FROM Employee e ORDER BY e.firstName, e.secondName", Employee.class)
+				.getResultList();
 	}
 
-	public void updateEmployee(Long oldEmployeeId, Employee newEmployee) {
-		deleteEmployee(oldEmployeeId);
-		em.merge(newEmployee);
+	public void updateEmployee(Employee newEmployee) {
+		Employee employee = em.find(Employee.class, newEmployee.getId());
+
+		employee.setFirstName(newEmployee.getFirstName());
+		employee.setSecondName(newEmployee.getSecondName());
+		employee.setMark(newEmployee.getMark());
+		employee.setFunction(newEmployee.getFunction());
+		employee.setEmploymentDate(newEmployee.getEmploymentDate());
+		employee.setActive(newEmployee.getActive());
+
+		em.merge(employee);
 	}
 
-	@Override
-	public void deleteEmployee(Long employeeId) {
+	public void markForDeletionEmployee(Long employeeId) {
 		Employee employee = em.find(Employee.class, employeeId);
-		employee.setActive(true);
-		
+		employee.setActive(false);
+
 		em.merge(employee);
 	}
 

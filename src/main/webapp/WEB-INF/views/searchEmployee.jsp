@@ -57,19 +57,20 @@
 				</thead>
 				
 				<tbody>
-					<c:forEach items="${employees}" var="employee">
-						<tr>
+					<c:forEach items="${employees}" var="employee" varStatus="vs">
+						<tr class="employee-row">
 							<td>${employee.firstName}</td>
 							<td>${employee.secondName}</td>
 							<td>${employee.mark}</td>
 							<td>${employee.function}</td>
 							<td>${employee.employmentDate}</td>
 							<td>
-        						<input class="text-center" type="checkbox" ${employee.active == 'true' ? 'checked' : ""} disabled />
+        						<input class="text-center edit-flag" type="checkbox" ${employee.active == 'true' ? '' : 'checked'} disabled />
 							</td>
 							<td>
 								<div class="row container-action">
-									<a class="btn icon-btn btn-info" href="<c:url value="employees/${employee.id}" />" >
+									<c:set var="disabled" value="${!employee.active}" />
+									<a id="row${vs.index}disableEditBtn" class="btn icon-btn btn-info ${disabled ? 'disabled' : ''}" href="<c:url value="employees/${employee.id}" />" >
 										<span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-info"></span>Edit
 									</a>
 									<a class="btn icon-btn btn-danger" href="<c:url value="employees/delete/${employee.id}" />" >
