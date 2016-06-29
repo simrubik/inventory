@@ -16,7 +16,6 @@ import annotation.AssetSerie;
 @Table(name = "asset")
 public class Asset {
 
-	private String test;
 	@Id
 	@Column(name = "asset_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "assetSeq")
