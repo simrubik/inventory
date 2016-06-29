@@ -1,0 +1,22 @@
+2016-06-29 10:54:56,851 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-29 10:54:56,974 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.1.0.Final}
+2016-06-29 10:54:56,976 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2016-06-29 10:54:56,978 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2016-06-29 10:54:57,045 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-06-29 10:54:57,349 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2016-06-29 10:54:57,539 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.h.e.j.e.i.LobCreatorBuilderImpl - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2016-06-29 10:54:57,542 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.hibernate.type.BasicTypeRegistry - HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@2c674720
+2016-06-29 10:54:57,956 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.2.4.Final
+2016-06-29 10:54:59,432 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-29 10:54:59,487 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2016-06-29 10:54:59,586 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.h.e.j.e.i.LobCreatorBuilderImpl - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2016-06-29 10:54:59,586 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] INFO  o.hibernate.type.BasicTypeRegistry - HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@2c674720
+2016-06-29 10:54:59,637 [ContainerBackgroundProcessor[StandardEngine[Catalina]]] WARN  o.h.j.i.EntityManagerFactoryRegistry - HHH000436: Entity manager factory name (default) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
+2016-06-29 10:55:08,142 [http-nio-8080-exec-4] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2016-06-29 10:55:15,770 [http-nio-8080-exec-11] INFO  controller.EmployeeController - Employee search started for ana4.
+2016-06-29 10:55:15,770 [http-nio-8080-exec-11] WARN  controller.EmployeeController - Employee search started for ana4.
+2016-06-29 10:55:15,838 [http-nio-8080-exec-11] INFO  controller.EmployeeController - Employee search finished.
