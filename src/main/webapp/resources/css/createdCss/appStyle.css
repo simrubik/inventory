@@ -1,0 +1,47 @@
+#inventory td, #inventory th {
+	vertical-align: middle;
+	text-align: center; 
+}
+
+#employeeSearch td, #employeeSearch th {
+	vertical-align: middle;
+	text-align: center; 
+}
+
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.readonly-data[readonly] {
+	background-color: white !important;
+}
+
+.language {
+	color: #360DCE !important;
+}
+
+.btn-glyphicon {
+	padding: 8px;
+	background: #ffffff;
+	margin-right: 4px;
+}
+
+.icon-btn {
+	padding: 1px 15px 3px 2px;
+	border-radius: 50px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.container-action {
+	width: 200px;
+	padding: auto;
+	margin: auto;
+	text-align: center;
+}
+
+.container {
+	width: 1370px;
+}

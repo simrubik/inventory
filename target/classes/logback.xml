@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="fileAppender" class="ch.qos.logback.core.FileAppender">
+		<file>E:/DiskD/Internship/proiect_practica/InventoryObjects/myLogFile.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>%d [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="fileAppender" />
+	</root>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+<!-- 		 encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.levi9.inventory" level="INFO" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
+
+<!-- TRACE < DEBUG < INFO <  WARN < ERROR -->
+<!-- request level p >= effective level q -->
+<!-- an output destination is called an appender. Appenders are for the console, files, remote socket servers, to MySQL, PostgreSQL, Oracle and other databases, JMS, and remote UNIX Syslog daemons -->
+<!-- appender additivity = the output of a log statement of logger L will go to all the appenders in L and its ancestors -->
+<!-- additivity flag set to false => nu se mai propaga la ancestor -->
+<!-- by associating a layout with an appender - pentru a customiza formatul  -->
+
+
+
