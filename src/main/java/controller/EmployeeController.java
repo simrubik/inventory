@@ -45,7 +45,7 @@ public class EmployeeController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String searchEmployee(@RequestParam("employeeName") String searchTerm, RedirectAttributes redirectAttributes,
 			Model model) {
-        slf4jLogger.info("Employee search started for " + searchTerm + ".");
+        slf4jLogger.info("Employee search started for {}.", searchTerm);
         slf4jLogger.trace("Employee search started for" + searchTerm + ".");
         slf4jLogger.warn("Employee search started for " + searchTerm + ".");
         
