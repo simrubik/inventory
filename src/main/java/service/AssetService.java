@@ -9,6 +9,12 @@ public interface AssetService {
 
 	void createAsset(Asset asset);
 	
+	void updateAsset(Asset asset);
+	
+	void markForDeletionAsset(String assetId);
+	
+	List<Asset> getAllAvailableAssets(String employeeId);
+	
 	List<Asset> getAllAssets();
 
 	Asset getAssetById(Long id);
@@ -17,5 +23,7 @@ public interface AssetService {
 
 	List<Asset> getAssetByName(String name);
 	
-	Set<String> getAssetDistinctName();
+	Set<String> getAssetDistinctName(String employeeId);
+	
+	
 }

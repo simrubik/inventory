@@ -8,7 +8,13 @@ public interface AssetDAO {
 
 	void createAsset(Asset asset);
 	
-	List<Asset> getAll();
+	void updateAsset(Asset asset);
+	
+	void markForDeletionAsset(Long assetId);
+	
+	List<Asset> getAllAvailableAssets(Long employeeId);
+	
+	List<Asset> getAllAssets();
 
 	Asset getAssetById(Long id);
 

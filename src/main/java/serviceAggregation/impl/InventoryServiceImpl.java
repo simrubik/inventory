@@ -62,7 +62,11 @@ public class InventoryServiceImpl implements InventoryService {
 				Returning returning = getReturningFromInventory(i);
 				
 //				receptionService.createReception(getReceptionFromInventory(i)); //nu e neaparat nevoie deoarece se creaza pe baza create-ului obiectului parinte
-								
+				
+				if(reception.getReceptionDate() != null && returning.getReturningDate() == null){
+					currentAsset.setAvailable(false);
+				}
+				
 				EmployeeAsset employeeAsset = new EmployeeAsset(currentEmployee, currentAsset, i.getUseTime(),
 						i.getPu(), i.getUm(), reception, returning);
 				employeeAssetService.createEmployeeAsset(employeeAsset);

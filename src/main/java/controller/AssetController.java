@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,15 @@ public class AssetController {
 	private AssetService assetService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String displayAsset(Model model) {
+	public String displaySearchAssetPage(Model model){
+		List<Asset> allAssets = assetService.getAllAssets();
+		model.addAttribute("assets", allAssets);
+
+		return "searchAsset";
+	}
+	
+	@RequestMapping(value = "new", method = RequestMethod.GET)
+	public String displayAddNewAsset(Model model) {
 		model.addAttribute("asset", new Asset());
 
 		return "addAsset";

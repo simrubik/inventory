@@ -23,6 +23,7 @@ import model.Employee;
 import service.AssetSearchService;
 import service.AssetService;
 import service.EmployeeSearchService;
+import service.EmployeeService;
 import serviceAggregation.InventoryService;
 
 @Controller("inventoryController")
@@ -34,6 +35,8 @@ public class InventoryController {
 	@Autowired
 	private EmployeeSearchService employeeSearchService;
 	@Autowired
+	private EmployeeService employeeService;
+	@Autowired
 	private AssetService assetService;
 	@Autowired
 	private AssetSearchService assetSearchService;
@@ -41,8 +44,8 @@ public class InventoryController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String displayInventoryForm(Model model) {
 		model.addAttribute("employees", employeeSearchService.getEmployees(""));
-		model.addAttribute("empl", new Employee());
-
+//		model.addAttribute("empl", new Employee());
+//
 //		model.addAttribute("assets", assetService.getAssetDistinctName());
 //		model.addAttribute("assetSerie", assetSearchService.getAssets(""));
 //		
@@ -58,7 +61,7 @@ public class InventoryController {
 
 	@RequestMapping(value="/{employeeId}", method=RequestMethod.GET)
 	public String goToEmployeeInventory(@PathVariable("employeeId") String id, Model model){
-		model.addAttribute("assets", assetService.getAssetDistinctName());
+		model.addAttribute("assets", assetService.getAssetDistinctName(id));
 		model.addAttribute("assetSerie", assetSearchService.getAssets(""));
 		
 		EmployeeInventory ei = new EmployeeInventory();
@@ -66,6 +69,9 @@ public class InventoryController {
 		if(inventoryService.getExistingInventory(Long.parseLong(id)) != null){
 			ei.setInventoryList(inventoryService.getExistingInventory(Long.parseLong(id)));
 		}
+		
+		Employee e = employeeService.getEmployeeById(Long.parseLong(id));
+		model.addAttribute("employee", e);
 		
 		if(!model.containsAttribute("inventoryList")){
 			model.addAttribute("inventoryList", ei);
@@ -82,7 +88,7 @@ public class InventoryController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("BindingResult valid error");
 			model.addAttribute("employees", employeeSearchService.getEmployees(""));
-			model.addAttribute("assets", assetService.getAssetDistinctName());
+			model.addAttribute("assets", assetService.getAssetDistinctName(emplId));
 			model.addAttribute("assetSerie", assetSearchService.getAssets(""));
 
 			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.inventoryList", bindingResult);

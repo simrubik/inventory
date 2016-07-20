@@ -35,16 +35,31 @@ public class AssetServiceImpl implements AssetService{
 		return assetDao.getAssetByName(name);
 	}
 
-	public List<Asset> getAllAssets() {
-		return assetDao.getAll();
+	public List<Asset> getAllAvailableAssets(String employeeId) {
+		Long id = Long.parseLong(employeeId);
+		return assetDao.getAllAvailableAssets(id);
 	}
 
-	public Set<String> getAssetDistinctName(){
+	public Set<String> getAssetDistinctName(String employeeId){
 		Set<String> assetNames = new TreeSet<String>();
-		for(Asset a : getAllAssets()){
+		for(Asset a : getAllAvailableAssets(employeeId)){
 			assetNames.add(a.getName());
 		}
 		
 		return assetNames;
+	}
+
+	public List<Asset> getAllAssets() {
+		return assetDao.getAllAssets();
+	}
+
+	public void updateAsset(Asset asset) {
+		assetDao.updateAsset(asset);
+	}
+
+	public void markForDeletionAsset(String assetId) {
+		Long id = Long.parseLong(assetId);
+		
+		assetDao.markForDeletionAsset(id);		
 	}
 }

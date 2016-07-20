@@ -1,10 +1,6 @@
 package utils;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
-
-import javax.persistence.EntityManagerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -28,14 +23,14 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @Import(DatabaseConfig.class)
-@ComponentScan(basePackages = { "storage", "service", "controller", "dto", "serviceAggregation", "annotation" })
-@EnableTransactionManagement
 @EnableWebMvc
+@EnableTransactionManagement
+@ComponentScan(basePackages = { "storage", "service", "controller", "dto", "serviceAggregation", "annotation"})
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired
@@ -52,24 +47,25 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public EntityManagerFactory entityManagerFactory() {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(databaseConfig.dataSource());
 		emf.setJpaVendorAdapter(jpaVendorAdapter());
 		emf.setPackagesToScan("model");
-		return emf.getObject();
+		return emf;
 	}
 
 	@Bean
 	public PlatformTransactionManager transactionManager() {
 		JpaTransactionManager txManager = new JpaTransactionManager();
-		txManager.setEntityManagerFactory(entityManagerFactory());
+		txManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return txManager;
 	}
 
 	@Bean
 	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setViewClass(JstlView.class);
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		return resolver;
@@ -87,14 +83,14 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 		return jsonMessageConverter;
 	}
 
-	@Bean
-	public RequestMappingHandlerAdapter requestMappingHandlerAdapter() {
-		RequestMappingHandlerAdapter requestMappingAdapter = new RequestMappingHandlerAdapter();
-		List<HttpMessageConverter<?>> list = Collections.emptyList();
-		list.add(jsonMessageConverter());
-		requestMappingAdapter.setMessageConverters(list);
-		return requestMappingAdapter;
-	}
+//	@Bean
+//	public RequestMappingHandlerAdapter requestMappingHandlerAdapter() {
+//		RequestMappingHandlerAdapter requestMappingAdapter = new RequestMappingHandlerAdapter();
+//		List<HttpMessageConverter<?>> list = new ArrayList<>();
+//		list.add(jsonMessageConverter());
+//		requestMappingAdapter.setMessageConverters(list);
+//		return requestMappingAdapter;
+//	}
 
 	@Bean
 	public ReloadableResourceBundleMessageSource messageSource() {

@@ -8,6 +8,11 @@
 	text-align: center;
 }
 
+#assetSearch td, #assetSearch th {
+	vertical-align: middle;
+	text-align: center;
+}
+
 .error {
 	color: #ff0000;
 	font-style: italic;

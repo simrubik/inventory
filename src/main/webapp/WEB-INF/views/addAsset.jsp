@@ -37,7 +37,7 @@
 	<form:form id="assetForm" action="assets" method="POST" commandName="asset"
 		class="form-horizontal" role="form">
 		<div class="form-group">
-			<label class="control-label col-sm-2"><spring:message code="form.addAsset.assetName"/>:</label>
+			<label class="control-label col-sm-2"><spring:message code="form.asset.assetName"/>:</label>
 			<div class="col-xs-4">
 				<form:input path="name" class="form-control" />
 			</div>
@@ -45,7 +45,7 @@
 			<form:errors class="col-xs-3" path="name" cssClass="error"></form:errors>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2"><spring:message code="form.addAsset.assetSerie"/>:</label>
+			<label class="control-label col-sm-2"><spring:message code="form.asset.assetSerie"/>:</label>
 			<div class="col-xs-4">
 				<form:input path="serie" class="form-control" />
 			</div>

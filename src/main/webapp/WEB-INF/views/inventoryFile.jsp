@@ -69,6 +69,8 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 		<input type="hidden" name="employeeId" value="${employeeId}" />
+		<c:set var="disabled" value="${!employee.active}" />
+		
 		<div class="form-group">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10">
@@ -156,7 +158,7 @@
 								<form:input name="returningQuantity" style="width: 100%;" path="inventoryList[${vs.index}].returningQuantity" />
 							</td>
 							<td>
-								<a class="btn icon-btn btn-warning remove-row-btn">
+								<a class="btn icon-btn btn-warning remove-row-btn ${disabled ? 'disabled' : ''}">
 									<span class="glyphicon btn-glyphicon glyphicon-minus img-circle text-warning"></span>Remove
 								</a>
 							</td>
@@ -217,9 +219,9 @@
 		<div class="form-group">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10">
-				<input class="btn btn-default plusbtn" type="button" value="<spring:message code="form.btn.addRow"/>" />
+				<input class="btn btn-default plusbtn ${disabled ? 'disabled' : ''}" type="button" value="<spring:message code="form.btn.addRow"/>" />
 
-				<button type="submit" class="btn btn-default pull-right"><spring:message code="form.btn.submit"/></button>
+				<button type="submit" class="btn btn-default pull-right ${disabled ? 'disabled' : ''}"><spring:message code="form.btn.submit"/></button>
 			</div>
 			<div class="col-sm-1"></div>
 		</div>

@@ -28,6 +28,9 @@ public class Asset {
 	@NotEmpty
 	@AssetSerie
 	private String serie;
+	
+	private Boolean available;
+	private Boolean active;
 
 	public Asset() {
 	}
@@ -35,6 +38,8 @@ public class Asset {
 	public Asset(String name, String serie) {
 		this.name = name;
 		this.serie = serie;
+		this.available = true;
+		this.active = true;
 	}
 
 	public Long getId() {
@@ -60,4 +65,21 @@ public class Asset {
 	public void setSerie(String serie) {
 		this.serie = serie;
 	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+	
 }

@@ -71,7 +71,7 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "new", method = RequestMethod.POST)
-	public String addEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult,
+	public String addEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult bindingResult,
 			Model model) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("BindingResult valid error");
