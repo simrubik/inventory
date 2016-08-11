@@ -10,11 +10,13 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- we define the file that is going to act as the application context. In this file we will configure the Spring context -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:springConfig/spring-config.xml</param-value>
 	</context-param>
 
+	<!-- Se creeaza o instanta DispatcherServlet care va gestiona SpringMVC lifecycle -->
 	<servlet>
 		<servlet-name>dispatch-servlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

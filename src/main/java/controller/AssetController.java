@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import model.Asset;
 import service.AssetService;
@@ -25,9 +27,23 @@ public class AssetController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String displaySearchAssetPage(Model model){
 		List<Asset> allAssets = assetService.getAllAssets();
-		model.addAttribute("assets", allAssets);
-
+		
+		if(!model.containsAttribute("assets")){
+			model.addAttribute("assets", allAssets);
+		}
+		
 		return "searchAsset";
+	}
+	
+	//Pentru search
+	@RequestMapping(method = RequestMethod.POST)
+	public String searchAsset(@RequestParam("searchTerm") String searchTerm, RedirectAttributes redirectAttributes, Model model){		
+		List<Asset> searchedAssets = assetService.getAssetByName(searchTerm);
+		
+		model.addAttribute("assets", searchedAssets);
+		redirectAttributes.addFlashAttribute("assets", searchedAssets);
+		
+		return "redirect:/assets";
 	}
 	
 	@RequestMapping(value = "new", method = RequestMethod.GET)
@@ -37,7 +53,7 @@ public class AssetController {
 		return "addAsset";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "new", method = RequestMethod.POST)
 	public String addAsset(@Valid @ModelAttribute("asset") Asset asset, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("BindingResult valid error");

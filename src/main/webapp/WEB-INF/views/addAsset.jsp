@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-	<form:form id="assetForm" action="assets" method="POST" commandName="asset"
+	<form:form id="assetForm" action="assets/new" method="POST" commandName="asset"
 		class="form-horizontal" role="form">
 		<div class="form-group">
 			<label class="control-label col-sm-2"><spring:message code="form.asset.assetName"/>:</label>

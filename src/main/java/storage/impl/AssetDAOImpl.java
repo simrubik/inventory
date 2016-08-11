@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import model.Asset;
-import model.Employee;
 import storage.AssetDAO;
 
 @Repository("assetDAOImpl")
@@ -33,7 +32,7 @@ public class AssetDAOImpl implements AssetDAO {
 	}
 
 	public List<Asset> getAssetByName(String name) {
-		return em.createQuery("SELECT a FROM Asset a WHERE lower(a.name) like :name", Asset.class)
+		return em.createQuery("SELECT a FROM Asset a WHERE lower(a.name) like :name ORDER BY a.name", Asset.class)
 				.setParameter("name", '%' + name.toLowerCase() + '%').getResultList();
 	}
 
@@ -81,7 +80,7 @@ public class AssetDAOImpl implements AssetDAO {
 
 	@Override
 	public List<Asset> getAllAssets() {
-		return em.createQuery("SELECT a FROM Asset a", Asset.class).getResultList();
+		return em.createQuery("SELECT a FROM Asset a ORDER BY a.name", Asset.class).getResultList();
 	}
 
 	@Override

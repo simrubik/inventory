@@ -70,6 +70,9 @@ public class InventoryServiceImpl implements InventoryService {
 				EmployeeAsset employeeAsset = new EmployeeAsset(currentEmployee, currentAsset, i.getUseTime(),
 						i.getPu(), i.getUm(), reception, returning);
 				employeeAssetService.createEmployeeAsset(employeeAsset);
+				
+				//Dupa crearea unui inventory=EmployeeAsset, trebuie facut update la asset-ul respectiv, ca sa nu mai fie 'available' pentru un alt employee
+				assetService.updateAsset(currentAsset);
 			}
 		}
 
