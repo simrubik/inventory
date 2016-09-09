@@ -7,6 +7,10 @@ import model.Returning;
 public interface ReturningDAO {
 
 	void createReturning(Returning returning);
+	
+	void updateReturning(Returning returning);
+	
+	List<Returning> getReturningByEmployeeId(Long employeeId);
 
-	List<Returning> getEmployeeAssetReturning(Integer employeeAssetId);
+	Returning getReturningByEmployeeIdAndAssetId(Long employeeId, Long employeeAssetId);
 }

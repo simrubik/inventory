@@ -20,9 +20,25 @@ public class ReturningDAOImpl implements ReturningDAO {
 		em.persist(returning);
 	}
 
-	public List<Returning> getEmployeeAssetReturning(Integer employeeAssetId) {
-		return em.createQuery("SELECT r FROM Returning r WHERE r.employeeAsset.id = :id", Returning.class)
-				.setParameter("id", employeeAssetId).getResultList();
+	public void updateReturning(Returning newReturning) {
+		Returning returning = em.find(Returning.class, newReturning.getId());
+		
+		returning.setNumber(newReturning.getNumber());
+		returning.setQuantity(newReturning.getQuantity());
+		returning.setReturningDate(newReturning.getReturningDate());
+		returning.setType(newReturning.getType());
+		
+		em.merge(returning);
+	}
+
+	public List<Returning> getReturningByEmployeeId(Long employeeId) {
+		return em.createNamedQuery("SELECT r FROM Returning r INNER JOIN EmployeeAsset ea ON r.id=ea.returning.id WHERE ea.employee.id =:id", Returning.class).setParameter("id", employeeId).getResultList();
+	}
+
+	@Override
+	public Returning getReturningByEmployeeIdAndAssetId(Long employeeId, Long employeeAssetId) {
+		return em.createQuery("SELECT r FROM Returning r INNER JOIN EmployeeAsset ea ON r.id=ea.returning.id WHERE ea.employee.id=:employeeId and ea.id=:employeeAssetId", Returning.class)
+				.setParameter("employeeId", employeeId).setParameter("employeeAssetId", employeeAssetId).getSingleResult();
 	}
 
 }

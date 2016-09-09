@@ -57,6 +57,7 @@ $(document).ready(function() {
 		row.find(".returning-type").attr("name", "inventoryList[" + lastIndex +"].returningType");
 		row.find(".returning-number").attr("name", "inventoryList[" + lastIndex +"].returningnNumber");
 		row.find(".returning-quantity").attr("name", "inventoryList[" + lastIndex +"].returningQuantity");
+		row.find(".employeeAsset_id").attr("name", "inventoryList[" + lastIndex + "].employeeAssetId");
 		
 		setupAssetsRow(row);
 		setupDatePicker();

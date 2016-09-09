@@ -21,8 +21,24 @@ public class ReceptionServiceImpl implements ReceptionService {
 		receptionDAO.createReception(reception);
 	}
 
-	public List<Reception> getEmployeeAssetReceptions(Long employeeAssetId) {
-		return null;
+	@Override
+	public void updateReception(Reception reception) {
+		receptionDAO.updateReception(reception);
+	}
+
+	@Override
+	public Reception getReceptionById(String receptionId) {
+		return receptionDAO.getReceptionById(Long.parseLong(receptionId));
+	}
+
+	@Override
+	public List<Reception> getReceptionByEmployeeId(String employeeId) {
+		return receptionDAO.getReceptionByEmployeeId(Long.parseLong(employeeId));
+	}
+
+	@Override
+	public Reception getReceptionByEmployeeIdAndAssetId(String employeeId, String employeeAssetId) {
+		return receptionDAO.getReceptionByEmployeeIdAndAssetId(Long.parseLong(employeeId), Long.parseLong(employeeAssetId));
 	}
 
 }

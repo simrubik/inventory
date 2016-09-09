@@ -49,7 +49,7 @@
 	<form:form id="employeeForm" action="${actionUrl}" method="POST"
 		commandName="employee" class="form-horizontal" role="form">
 		<input type="hidden" name="id" value="${employeeId}" />
-		<input type="hidden" name="active" value="${active}" />
+<%-- 		<input type="hidden" name="active" value="${active}" /> --%>
 <%-- 		<form:hidden path="active"/> --%>
 		
 		<div class="form-group">

@@ -8,5 +8,11 @@ public interface ReceptionService {
 
 	void createReception(Reception reception);
 
-	List<Reception> getEmployeeAssetReceptions(Long employeeAssetId);
+	void updateReception(Reception newReception);
+
+	Reception getReceptionById(String receptionId);
+
+	List<Reception> getReceptionByEmployeeId(String employeeId);
+
+	Reception getReceptionByEmployeeIdAndAssetId(String employeeId, String employeeAssetId);
 }

@@ -70,7 +70,7 @@
 							<div class="row container-action">
 								<c:set var="disabled" value="${!asset.active}" />
 								<a class="btn icon-btn btn-info ${disabled ? 'disabled' : ''}"
-									href="<c:url value="assets/${asset.id}" />"> 
+									href="<c:url value="assets/editAsset/${asset.id}" />"> 
 									<span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-info"></span>Edit 
 								</a>
 								<a class="btn icon-btn btn-danger ${disabled ? 'disabled' : ''}"

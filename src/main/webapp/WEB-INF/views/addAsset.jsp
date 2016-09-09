@@ -13,19 +13,6 @@
 <!-- <script type="text/javascript" src="resources/js/createdScripts/assetFile.js"></script> -->
 	
 <body>
-<!-- 	<nav class="navbar navbar-default"> -->
-<!-- 		<div class="container-fluid"> -->
-<!-- 			<div class="collapse navbar-collapse" -->
-<!-- 				id="bs-example-navbar-collapse-1"> -->
-<!-- 				<ul class="nav navbar-nav"> -->
-<!-- 					<li><a href="employees">Angajat</a></li> -->
-<!-- 					<li class="active"><a href="#">Obiecte Inventar</a></li> -->
-<!-- 					<li><a href="inventory">Fisa Evidenta</a></li> -->
-<!-- 				</ul> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</nav> -->
-
 	<inventory:bodyHeader menuName="assetMenu"/>
 	
 	<div class="row">
@@ -33,9 +20,19 @@
 			<label><h2><spring:message code="form.addAsset.title"/></h2></label>
 		</div>
 	</div>
+	
+	<c:choose>
+		<c:when test="${action == 'add'}">
+			<c:set var="actionUrl" value="new" />
+		</c:when>
+		<c:otherwise>
+			<c:set var="actionUrl" value="${assetId}" />
+		</c:otherwise>
+	</c:choose>
 
-	<form:form id="assetForm" action="assets/new" method="POST" commandName="asset"
+	<form:form id="assetForm" action="${actionUrl}" method="POST" commandName="asset"
 		class="form-horizontal" role="form">
+		<input type="hidden" name="id" value="${assetId}" />
 		<div class="form-group">
 			<label class="control-label col-sm-2"><spring:message code="form.asset.assetName"/>:</label>
 			<div class="col-xs-4">

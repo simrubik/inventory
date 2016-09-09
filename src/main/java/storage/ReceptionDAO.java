@@ -7,6 +7,12 @@ import model.Reception;
 public interface ReceptionDAO {
 
 	void createReception(Reception reception);
+	
+	void updateReception(Reception newReception);
+	
+	Reception getReceptionById(Long receptionId);
+	
+	List<Reception> getReceptionByEmployeeId(Long employeeId);
 
-	List<Reception> getEmployeeAssetReceptions(Long employeeAssetId);
+	Reception getReceptionByEmployeeIdAndAssetId(Long employeeId, Long employeeAssetId);
 }

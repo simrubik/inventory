@@ -99,14 +99,14 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/{employeeId}", method = RequestMethod.POST)
-	public String editEmployee(@Valid @ModelAttribute("employee") Employee newEmployee, BindingResult bindingResult, Model model) {
+	public String editEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("BindingResult valid error");
 			return "addEmployee";
 		}
 
-		employeeService.updateEmployee(newEmployee);
-		model.addAttribute("employee", newEmployee);
+		employeeService.updateEmployee(employee);
+		model.addAttribute("employee", employee);
 
 		return "redirect:/employees";
 	}

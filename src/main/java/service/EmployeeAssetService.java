@@ -14,7 +14,11 @@ public interface EmployeeAssetService {
 	
 	List<Inventory> getInventoryForEmployee(Long employeeId);
 
-	List<Employee> getAssetEmployees(Integer assetId);
+	List<Employee> getAssetEmployees(Long assetId);
 	
 	void removeAllEmployeeAssets(Long employeeId);
+	
+	void updateEmployeeAsset(EmployeeAsset employeeAsset);
+
+	EmployeeAsset getEmployeeAssetByEmployeeIdAndAssetId(String employeeId, String employeeAssetId);
 }

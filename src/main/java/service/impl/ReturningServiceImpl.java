@@ -21,9 +21,17 @@ public class ReturningServiceImpl implements ReturningService {
 		returningDAO.createReturning(returning);
 	}
 
-	public List<Returning> getEmployeeAssetReturning(Integer employeeAssetId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateReturning(Returning returning) {
+		returningDAO.updateReturning(returning);	
+	}
+
+	public List<Returning> getReturningByEmployeeId(String employeeId) {
+		return returningDAO.getReturningByEmployeeId(Long.parseLong(employeeId));
+	}
+
+	@Override
+	public Returning getReturningByEmployeeIdAndAssetId(String employeeId, String employeeAssetId) {
+		return returningDAO.getReturningByEmployeeIdAndAssetId(Long.parseLong(employeeId), Long.parseLong(employeeAssetId));
 	}
 
 }

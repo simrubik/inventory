@@ -97,6 +97,7 @@
 					</tr>
 					<c:forEach items="${inventoryList.inventoryList}" varStatus="vs">
 						<tr class="asset-row">
+							<form:hidden path="inventoryList[${vs.index}].employeeAssetId"/>
 							<td>
 								<form:select class="asset-name form-control" name="assetName" path="inventoryList[${vs.index}].assetName">
 									<c:forEach items="${assets}" var="asset">
@@ -167,6 +168,8 @@
 
 
 					<tr class="asset-row hidden asset-row-template">
+						<input type="hidden" name="employeeAssetId" class="employeeAsset_id" />
+					
 						<td><select class="asset-name form-control" name="assetName">
 								<c:forEach items="${assets}" var="asset">
 									<option value="${asset}">${asset}</option>
@@ -219,9 +222,9 @@
 		<div class="form-group">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10">
-				<input class="btn btn-default plusbtn ${disabled ? 'disabled' : ''}" type="button" value="<spring:message code="form.btn.addRow"/>" />
+				<input class="btn btn-default plusbtn ${disabled ? 'disabled' : ''}" type="button" ${disabled ? 'disabled' : ''} value="<spring:message code="form.btn.addRow"/>" />
 
-				<button type="submit" class="btn btn-default pull-right ${disabled ? 'disabled' : ''}"><spring:message code="form.btn.submit"/></button>
+				<button type="submit" class="btn btn-default pull-right ${disabled ? 'disabled' : ''}" ${disabled ? 'disabled' : ''}><spring:message code="form.btn.submit"/></button>
 			</div>
 			<div class="col-sm-1"></div>
 		</div>

@@ -7,6 +7,10 @@ import model.Returning;
 public interface ReturningService {
 
 	void createReturning(Returning returning);
+	
+	void updateReturning(Returning returning);
+	
+	List<Returning> getReturningByEmployeeId(String employeeId);
 
-	List<Returning> getEmployeeAssetReturning(Integer employeeAssetId);
+	Returning getReturningByEmployeeIdAndAssetId(String employeeId, String employeeAssetId);
 }

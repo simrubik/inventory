@@ -33,6 +33,8 @@ public class Asset {
 	private Boolean active;
 
 	public Asset() {
+		this.available = true;
+		this.active = true;
 	}
 
 	public Asset(String name, String serie) {

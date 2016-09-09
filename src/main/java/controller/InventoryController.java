@@ -97,7 +97,8 @@ public class InventoryController {
 		    return "redirect:/inventory/" + emplId;
 		}
 		
-		inventoryService.createInventory(inventoryList, emplId);
+//		inventoryService.createInventory(inventoryList, emplId);
+		inventoryService.updateExistingInventory(inventoryList, emplId);
 				
 		model.addAttribute("inventoryList", inventoryList);
 		

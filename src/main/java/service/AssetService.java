@@ -17,7 +17,7 @@ public interface AssetService {
 	
 	List<Asset> getAllAssets();
 
-	Asset getAssetById(Long id);
+	Asset getAssetById(String id);
 
 	Asset getAssetBySerie(String serie);
 
@@ -25,5 +25,5 @@ public interface AssetService {
 	
 	Set<String> getAssetDistinctName(String employeeId);
 	
-	
+	List<Asset> getAssetsByEmployeeId(String employeeId);
 }

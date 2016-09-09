@@ -23,8 +23,8 @@ public class AssetServiceImpl implements AssetService{
 		assetDao.createAsset(asset);
 	}
 
-	public Asset getAssetById(Long id) {
-		return assetDao.getAssetById(id);
+	public Asset getAssetById(String id) {
+		return assetDao.getAssetById(Long.parseLong(id));
 	}
 
 	public Asset getAssetBySerie(String serie) {
@@ -61,5 +61,10 @@ public class AssetServiceImpl implements AssetService{
 		Long id = Long.parseLong(assetId);
 		
 		assetDao.markForDeletionAsset(id);		
+	}
+
+	@Override
+	public List<Asset> getAssetsByEmployeeId(String employeeId) {
+		return assetDao.getAssetsByEmployeeId(Long.parseLong(employeeId));
 	}
 }

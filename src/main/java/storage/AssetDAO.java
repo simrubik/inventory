@@ -21,4 +21,6 @@ public interface AssetDAO {
 	Asset getAssetBySerie(String serie);
 
 	List<Asset> getAssetByName(String name);
+
+	List<Asset> getAssetsByEmployeeId(Long employeeId);
 }

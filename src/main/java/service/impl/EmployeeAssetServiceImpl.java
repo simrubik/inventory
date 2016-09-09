@@ -30,7 +30,7 @@ public class EmployeeAssetServiceImpl implements EmployeeAssetService {
 		return employeeAssetDAO.getEmployeeAssets(employeeId);
 	}
 
-	public List<Employee> getAssetEmployees(Integer assetId) {
+	public List<Employee> getAssetEmployees(Long assetId) {
 		return employeeAssetDAO.getAssetEmployees(assetId);
 	}
 
@@ -63,7 +63,7 @@ public class EmployeeAssetServiceImpl implements EmployeeAssetService {
 			if (ret != null && !(ret.getQuantity() == null) && !"".equals(ret.getQuantity())) {
 				returningQuantity = ret.getQuantity().toString();
 			}
-			Inventory inventory = new Inventory(ea.getAsset().getName(), ea.getAsset().getSerie(), ea.getUseTime(), ea.getPu(), ea.getUm(), receptionDate, r != null ? r.getType() : null, r != null ? r.getNumber() : null, receptionQuantity, returningDate, ret != null ? ret.getType() : null, ret != null ? ret.getNumber() : null, returningQuantity);
+			Inventory inventory = new Inventory(ea.getAsset().getName(), ea.getAsset().getSerie(), ea.getUseTime(), ea.getPu(), ea.getUm(), receptionDate, r != null ? r.getType() : null, r != null ? r.getNumber() : null, receptionQuantity, returningDate, ret != null ? ret.getType() : null, ret != null ? ret.getNumber() : null, returningQuantity, ea.getId().toString());
 			
 			inventoryList.add(inventory);
 		}
@@ -76,5 +76,15 @@ public class EmployeeAssetServiceImpl implements EmployeeAssetService {
 //		employeeAssetDAO.removeAllEmployeeAssets(employeeId);	
 				
 		employeeAssetDAO.removeAllEmployeeAssets(employeeId, employeeAssetDAO.getEmployeeAssets(employeeId));
+	}
+
+	@Override
+	public void updateEmployeeAsset(EmployeeAsset employeeAsset) {
+		employeeAssetDAO.updateEmployeeAsset(employeeAsset);
+	}
+
+	@Override
+	public EmployeeAsset getEmployeeAssetByEmployeeIdAndAssetId(String employeeId, String employeeAssetId) {
+		return employeeAssetDAO.getEmployeeAssetByEmployeeIdAndAssetId(Long.parseLong(employeeId), Long.parseLong(employeeAssetId));
 	}
 }

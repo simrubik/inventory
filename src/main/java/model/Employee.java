@@ -43,6 +43,7 @@ public class Employee {
 	private Boolean active;
 
 	public Employee() {
+		this.active = true;
 	}
 
 	public Employee(String firstName, String secondName, String mark, String function, Date employmentDate) {

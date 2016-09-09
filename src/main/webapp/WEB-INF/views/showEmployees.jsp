@@ -18,14 +18,15 @@
 	<inventory:bodyHeader menuName="inventoryMenu" />
 
 	<div class="row">
-		<div class="col-lg-10 col-lg-offset-2">
+		<div class="col-lg-8 col-lg-offset-4">
 			<label><h2><spring:message code="form.showEmployee.title"/></h2></label>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="col-xs-offset-1 control-label col-xs-1"><spring:message code="form.showEmployee.choseEmployee" />:</label>
-		<div class="btn-group">
+	</br>
+	<div class="form-group form-horizontal">
+		<label class="control-label col-sm-2"><spring:message code="form.showEmployee.choseEmployee" />:</label>
+		<div class="btn-group col-xs-4">
 			<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="form.showEmployee.dropdownDefault" /><span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<c:forEach items="${employees}" var="employee">

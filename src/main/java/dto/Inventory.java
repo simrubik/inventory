@@ -23,12 +23,14 @@ public class Inventory {
 	private String returningnNumber;
 	private String returningQuantity;
 	
+	private String employeeAssetId; 
+	
 	public Inventory() {
 	}
 
 	public Inventory(String assetName, String assetSerie, String useTime, String pu, String um, String receptionDate,
 			String receptionType, String receptionNumber, String receptionQuantity, String returningDate,
-			String returningType, String returningnNumber, String returningQuantity) {
+			String returningType, String returningnNumber, String returningQuantity, String employeeAssetId) {
 		this.assetName = assetName;
 		this.assetSerie = assetSerie;
 		this.useTime = useTime;
@@ -42,6 +44,7 @@ public class Inventory {
 		this.returningType = returningType;
 		this.returningnNumber = returningnNumber;
 		this.returningQuantity = returningQuantity;
+		this.employeeAssetId = employeeAssetId;
 	}
 
 	public String getAssetName() {
@@ -146,6 +149,14 @@ public class Inventory {
 
 	public void setReturningQuantity(String returningQuantity) {
 		this.returningQuantity = returningQuantity;
+	}
+
+	public String getEmployeeAssetId() {
+		return employeeAssetId;
+	}
+
+	public void setEmployeeAssetId(String employeeAssetId) {
+		this.employeeAssetId = employeeAssetId;
 	}
 
 	
