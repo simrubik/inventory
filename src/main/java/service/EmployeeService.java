@@ -17,4 +17,6 @@ public interface EmployeeService {
 	Employee getEmployeeById(Long id);
 
 	List<Employee> getEmployeeByName(String name);
+
+	List<Employee> getAvailableEmployees();
 }

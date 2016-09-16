@@ -108,7 +108,7 @@ public class InventoryServiceImpl implements InventoryService {
 			Reception currentReception ;
 			Returning currentReturning ;
 					
-			if( i.getEmployeeAssetId() != null){
+			if( i.getEmployeeAssetId() != null && !"".equals(i.getEmployeeAssetId())){
 				currentEmployeeAsset = getCurrentEmployeeAsset(employeeId, i.getEmployeeAssetId());
 				currentEmployeeAsset.setUseTime(i.getUseTime());
 				currentEmployeeAsset.setPu(i.getPu());

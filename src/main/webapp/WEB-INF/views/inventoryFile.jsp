@@ -99,7 +99,7 @@
 						<tr class="asset-row">
 							<form:hidden path="inventoryList[${vs.index}].employeeAssetId"/>
 							<td>
-								<form:select class="asset-name form-control" name="assetName" path="inventoryList[${vs.index}].assetName">
+								<form:select class="asset-name form-control" name="assetName" path="inventoryList[${vs.index}].assetName" disabled="true">
 									<c:forEach items="${assets}" var="asset">
 										<form:option value="${asset}">${asset} </form:option>
 									</c:forEach>
@@ -112,9 +112,9 @@
 								<form:errors path="inventoryList[${vs.index}].assetName" cssClass="error"></form:errors>
 							</td>
 							<td>
-								<form:select class="asset-serie form-control" name="assetSerie" path="inventoryList[${vs.index}].assetSerie">
+								<form:select class="asset-serie form-control" name="assetSerie" path="inventoryList[${vs.index}].assetSerie" disabled="true">
 									<c:forEach items="${assetSerie}" var="assetSerie">
-										<form:option value="${assetSerie.id}">${assetSerie.serie}</form:option>
+										<form:option value="${assetSerie.id}" >${assetSerie.serie}</form:option>
 									</c:forEach>
 								</form:select>
 								<form:errors path="inventoryList[${vs.index}].assetSerie" cssClass="error"></form:errors>
@@ -177,7 +177,7 @@
 						</select></td>
 						<td><select class="asset-serie form-control"
 							name="assetSerie">
-								<c:forEach items="${assetSerie}" var="assetSerie">
+								<c:forEach items="${assetSerie}" var="assetSerie">										
 									<option value="${assetSerie.id}">${assetSerie.serie}</option>
 								</c:forEach>
 						</select></td>

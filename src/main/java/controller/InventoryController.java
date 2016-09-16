@@ -22,7 +22,6 @@ import model.Asset;
 import model.Employee;
 import service.AssetSearchService;
 import service.AssetService;
-import service.EmployeeSearchService;
 import service.EmployeeService;
 import serviceAggregation.InventoryService;
 
@@ -32,8 +31,7 @@ public class InventoryController {
 
 	@Autowired
 	private InventoryService inventoryService;
-	@Autowired
-	private EmployeeSearchService employeeSearchService;
+
 	@Autowired
 	private EmployeeService employeeService;
 	@Autowired
@@ -43,7 +41,7 @@ public class InventoryController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String displayInventoryForm(Model model) {
-		model.addAttribute("employees", employeeSearchService.getEmployees(""));
+		model.addAttribute("employees", employeeService.getAvailableEmployees());
 //		model.addAttribute("empl", new Employee());
 //
 //		model.addAttribute("assets", assetService.getAssetDistinctName());
@@ -87,7 +85,7 @@ public class InventoryController {
 		
 		if (bindingResult.hasErrors()) {
 			System.out.println("BindingResult valid error");
-			model.addAttribute("employees", employeeSearchService.getEmployees(""));
+			model.addAttribute("employees", employeeService.getAvailableEmployees());
 			model.addAttribute("assets", assetService.getAssetDistinctName(emplId));
 			model.addAttribute("assetSerie", assetSearchService.getAssets(""));
 

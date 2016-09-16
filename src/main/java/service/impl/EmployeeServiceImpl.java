@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 		Long id = Long.parseLong(employeeId);
 		
 		employeeDao.markForDeletionEmployee(id);
+	}
+
+	@Override
+	public List<Employee> getAvailableEmployees() {
+		List<Employee> availableEmployees = new ArrayList<>();
+		for(Employee e : getAllEmployees()){
+			if(e.getActive())
+				availableEmployees.add(e);
+		}
+		return availableEmployees;
 	}
 
 }
