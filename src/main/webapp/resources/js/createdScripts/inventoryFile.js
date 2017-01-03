@@ -70,4 +70,10 @@ $(document).ready(function() {
 		});
 	};
 	
+//	$('#inventoryForm').submit(function() {
+//		var lastIndex = $("#inventory .asset-row").length - 2;
+//		row.find(".asset-name").attr("name", "inventoryList[" + lastIndex +"].assetName").prop('disabled', false);
+//		row.find(".asset-serie").attr("name", "inventoryList[" + lastIndex +"].assetSerie").prop('disabled', false);
+//    });
+	    
 });

@@ -23,6 +23,15 @@
 	background-color: white !important;
 }
 
+.readonly-dropdown[readonly]{
+    background: #eee;
+    cursor:no-drop;
+}
+
+.readonly-dropdown[readonly] option{
+    display:none;
+}
+
 .language {
 	color: #360DCE !important;
 }

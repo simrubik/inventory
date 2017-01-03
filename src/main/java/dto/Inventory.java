@@ -14,9 +14,17 @@ public class Inventory {
 	private String useTime;
 	private String pu;
 	private String um;
+	
+	@NotEmpty
 	private String receptionDate;
+	
+	@NotEmpty
 	private String receptionType;
+	
+	@NotEmpty
 	private String receptionNumber;
+	
+	@NotEmpty
 	private String receptionQuantity;
 	private String returningDate;
 	private String returningType;

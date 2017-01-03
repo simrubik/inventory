@@ -99,20 +99,15 @@
 						<tr class="asset-row">
 							<form:hidden path="inventoryList[${vs.index}].employeeAssetId"/>
 							<td>
-								<form:select class="asset-name form-control" name="assetName" path="inventoryList[${vs.index}].assetName" disabled="true">
+								<form:select class="asset-name form-control readonly-dropdown" name="assetName" path="inventoryList[${vs.index}].assetName" readonly="readonly">
 									<c:forEach items="${assets}" var="asset">
 										<form:option value="${asset}">${asset} </form:option>
 									</c:forEach>
 								</form:select>
-<%-- 								<select class="asset-name form-control" name="inventoryList[${vs.index}].assetName" > --%>
-<%-- 									<c:forEach items="${assets}" var="asset"> --%>
-<%-- 										<option value="${asset}" ${asset==inventoryList.inventoryList[vs.index].assetName ? "selected" : "" }>${asset} </option> --%>
-<%-- 									</c:forEach> --%>
-<!-- 								</select> -->
 								<form:errors path="inventoryList[${vs.index}].assetName" cssClass="error"></form:errors>
 							</td>
 							<td>
-								<form:select class="asset-serie form-control" name="assetSerie" path="inventoryList[${vs.index}].assetSerie" disabled="true">
+								<form:select class="asset-serie form-control readonly-dropdown" name="assetSerie" path="inventoryList[${vs.index}].assetSerie" readonly="readonly">
 									<c:forEach items="${assetSerie}" var="assetSerie">
 										<form:option value="${assetSerie.id}" >${assetSerie.serie}</form:option>
 									</c:forEach>
@@ -130,14 +125,19 @@
 									<form:input type="text" class="form-control" name="receptionDate" path="inventoryList[${vs.index}].receptionDate" />
 									<label class="input-group-addon btn"> <span class="glyphicon glyphicon-calendar"></span></label>
 								</div>
+								<form:errors path="inventoryList[${vs.index}].receptionDate" cssClass="error"></form:errors>
 							</td>
-							<td><form:input name="receptionType" style="width: 100%;"
-									path="inventoryList[${vs.index}].receptionType" /></td>
-							<td><form:input name="receptionNumber" style="width: 100%;"
-									path="inventoryList[${vs.index}].receptionNumber" /></td>
+							<td>
+								<form:input name="receptionType" style="width: 100%;" path="inventoryList[${vs.index}].receptionType" />
+								<form:errors path="inventoryList[${vs.index}].receptionType" cssClass="error"></form:errors>
+							</td>
+							<td>
+								<form:input name="receptionNumber" style="width: 100%;" path="inventoryList[${vs.index}].receptionNumber" />
+								<form:errors path="inventoryList[${vs.index}].receptionNumber" cssClass="error"></form:errors>
+							</td>
 							<td>
 								<form:input name="receptionQuantity" style="width: 100%;" path="inventoryList[${vs.index}].receptionQuantity" />
-								<form:errors path="inventoryList[${vs.index}].receptionQuantity" csscssClass="error" ></form:errors>
+								<form:errors path="inventoryList[${vs.index}].receptionQuantity" cssClass="error" ></form:errors>
 							</td>
 							<td>
 								<div class="input-group date datepicker">
